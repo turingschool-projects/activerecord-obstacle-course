@@ -8,8 +8,8 @@ To get set up with the storedom application, clone it
 via `git` and pull in gem dependencies with `bundler`:
 
 ```sh
-$ git clone https://github.com/turingschool-examples/storedom.git
-$ cd storedom
+$ git clone https://github.com/turingschool-examples/storedom-5.git
+$ cd storedom-5 
 $ bundle update
 ```
 
