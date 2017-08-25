@@ -1,24 +1,20 @@
-# README
+## Storedom
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Storedom is a simplistic e-commerce application used for various lessons and tutorials at Turing.
 
-Things you may want to cover:
+### Setup
 
-* Ruby version
+To get set up with the storedom application, clone it
+via `git` and pull in gem dependencies with `bundler`:
 
-* System dependencies
+```sh
+$ git clone https://github.com/turingschool-examples/storedom.git
+$ cd storedom
+$ bundle update
+```
 
-* Configuration
+And set up the database and included seed records:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle exec rake db:{create,setup}
+```
