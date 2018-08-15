@@ -20,8 +20,8 @@ The remaining portions of the obstacle course will increase in difficulty and wi
 ```bash
 bundle install
 bundle update
-rake db:{drop,create,migrate,seed}
-rspec spec/models/activerecord_obstacle_course_spec.rb
+rake db:{drop,create,migrate,seed}   # seeding will take a few moments
+rspec
 # you should see several passing tests, and a few skipped tests
 ```
 
