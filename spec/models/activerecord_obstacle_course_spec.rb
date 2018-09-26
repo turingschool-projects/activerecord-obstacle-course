@@ -187,6 +187,12 @@ describe 'ActiveRecord Obstacle Course' do
     expect(orders).to eq(expected_result)
   end
 
+
+  # ========================
+  # You should be approximately here by the end of Week 1
+  # ========================
+
+
   it '11. sorts the orders from least expensive to most expensive' do
     expected_result = [order_1, order_2, order_3, order_4, order_5, order_6, order_7, order_9, order_8, order_10, order_11, order_12, order_13, order_14, order_15]
 
@@ -284,6 +290,12 @@ describe 'ActiveRecord Obstacle Course' do
     expect(names).to eq(expected_result)
   end
 
+
+  # ========================
+  # You should be approximately here by the end of Week 2
+  # ========================
+
+
   it '16. returns the names of users who ordered one specific item' do
     expected_result = [user_3.name, user_2.name]
 
@@ -376,6 +388,11 @@ describe 'ActiveRecord Obstacle Course' do
     expect(average.to_i).to eq(715)
   end
 
+  # ========================
+  # You should be approximately here by the end of Week 3
+  # ========================
+
+
   it '21. calculates the total sales' do
     # ---------------------- Using Ruby -------------------------
     total_sales = Order.all.map(&:amount).inject(:+)
@@ -460,6 +477,12 @@ describe 'ActiveRecord Obstacle Course' do
     expect(ordered_items).to eq(expected_result)
     expect(ordered_items).to_not include(unordered_item)
   end
+
+  
+  # ========================
+  # You should be approximately here by the end of Week 4
+  # ========================
+
 
   it '26. returns the names of items that are associated with one or more orders' do
     unordered_item_1 = Item.create(name: 'Unordered Item_1')
