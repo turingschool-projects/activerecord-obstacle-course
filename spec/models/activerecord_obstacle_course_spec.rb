@@ -334,7 +334,7 @@ describe 'ActiveRecord Obstacle Course' do
     expect(names).to eq(expected_result)
   end
 
-  it '18. returns the sorted names of items for a user order' do
+  it '18. returns the names of items for a users order' do
     expected_result = ['Thing 3', 'Thing 4', 'Thing 8', 'Thing 10']
 
     # ----------------------- Using Ruby -------------------------
