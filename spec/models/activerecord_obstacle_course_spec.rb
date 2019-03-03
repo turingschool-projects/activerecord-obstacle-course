@@ -3,11 +3,20 @@ require 'rails_helper'
 describe 'ActiveRecord Obstacle Course' do
   before :each do
     @user_1 = create(:user, name: 'Megan')
-    @user_2 = create(:user, name: 'Ian')
-    @user_3 = create(:user, name: 'Sal')
+    @user_2 = create(:user, name: 'Brian')
+    @user_3 = create(:user, name: 'Ian')
 
     # # DO NOT CHANGE THE ORDER OF THIS DATA TO MAKE TESTS PASS
-    @item_1, @item_4, @item_9, @item_2, @item_5, @item_10, @item_3, @item_6, @item_8, @item_7 = create_list(:item, 10)
+    @item_1  = create(:item, name: 'Apples')
+    @item_4  = create(:item, name: 'Bananas')
+    @item_9  = create(:item, name: 'Carrots')
+    @item_2  = create(:item, name: 'Dumplings')
+    @item_5  = create(:item, name: 'Eggplant')
+    @item_10 = create(:item, name: 'Figs')
+    @item_3  = create(:item, name: 'Grapes')
+    @item_6  = create(:item, name: 'Honey')
+    @item_8  = create(:item, name: 'Ice Cream')
+    @item_7  = create(:item, name: 'Jalapeno')
 
     # DO NOT CHANGE THE ORDER OF THIS DATA TO MAKE TESTS PASS
     @order_3 = create(:order, amount: 500, items: [@item_2, @item_3, @item_4, @item_5], user: @user_3)
@@ -17,7 +26,7 @@ describe 'ActiveRecord Obstacle Course' do
     @order_1 = create(:order, amount: 200, items: [@item_1, @item_1, @item_2, @item_3], user: @user_1)
     @order_13 = create(:order, amount: 870, items: [@item_2, @item_3, @item_4, @item_7], user: @user_1)
     @order_8 = create(:order, amount: 700, items: [@item_2, @item_3, @item_8, @item_9], user: @user_2)
-    @order_6 = create(:order, amount: 580, items: [@item_5, @item_8, @item_9, @item_10], user: @user_3)
+    @order_6 = create(:order, amount: 580, items: [@item_5, @item_8, @item_9, @item_10], user: @user_1)
     @order_10 = create(:order, amount: 750, items: [@item_1, @item_5, @item_4, @item_7], user: @user_1)
     @order_15 = create(:order, amount: 1000, items: [@item_1, @item_4, @item_5, @item_7], user: @user_3)
     @order_4 = create(:order, amount: 501, items: [@item_1, @item_1, @item_2, @item_3], user: @user_1)
@@ -181,7 +190,7 @@ describe 'ActiveRecord Obstacle Course' do
 
 
   it '9. finds orders for a user' do
-    expected_result = [@order_3, @order_6, @order_15, @order_9, @order_12]
+    expected_result = [@order_3, @order_15, @order_9, @order_12]
 
     # ----------------------- Using Ruby -------------------------
     orders_of_user_3 = Order.all.select { |order| order.user_id == @user_3.id }
@@ -269,7 +278,7 @@ describe 'ActiveRecord Obstacle Course' do
   end
 
   it '14. plucks all values from one column' do
-    expected_result = ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6', 'Thing 7', 'Thing 8', 'Thing 9', 'Thing 10']
+    expected_result = ['Apples', 'Bananas', 'Carrots', 'Dumplings', 'Eggplant', 'Figs', 'Grapes', 'Honey', 'Ice Cream', 'Jalapeno']
 
     # ----------------------- Using Ruby -------------------------
     names = Item.all.map(&:name)
@@ -285,21 +294,21 @@ describe 'ActiveRecord Obstacle Course' do
 
   it '15. gets all item names associated with all orders' do
     expected_result = [
-      'Thing 4', 'Thing 7', 'Thing 2', 'Thing 5', # order 3
-      'Thing 5', 'Thing 2', 'Thing 10', 'Thing 3', # order 11
-      'Thing 1', 'Thing 5', 'Thing 2', 'Thing 10', # order 5
-      'Thing 1', 'Thing 4', 'Thing 7', 'Thing 1', # order 2
-      'Thing 1', 'Thing 4', 'Thing 7', 'Thing 1', # order 1
-      'Thing 4', 'Thing 7', 'Thing 2', 'Thing 10', # order 13
-      'Thing 4', 'Thing 7', 'Thing 9', 'Thing 3', # order 8
-      'Thing 5', 'Thing 9', 'Thing 3', 'Thing 6', # order 6
-      'Thing 1', 'Thing 5', 'Thing 2', 'Thing 10', # order 10
-      'Thing 1', 'Thing 2', 'Thing 5', 'Thing 10', # order 15
-      'Thing 1', 'Thing 4', 'Thing 7', 'Thing 1', # order 4
-      'Thing 7', 'Thing 2', 'Thing 9', 'Thing 6', # order 9
-      'Thing 7', 'Thing 5', 'Thing 9', 'Thing 3', # order 14
-      'Thing 1', 'Thing 5', 'Thing 10', 'Thing 3', # order 7
-      'Thing 1', 'Thing 7', 'Thing 10', 'Thing 6', # order 12
+      'Dumplings', 'Grapes', 'Bananas', 'Eggplant',
+      'Eggplant', 'Bananas', 'Jalapeno', 'Carrots',
+      'Apples', 'Eggplant', 'Bananas', 'Jalapeno',
+      'Apples', 'Dumplings', 'Grapes', 'Apples',
+      'Apples', 'Dumplings', 'Grapes', 'Apples',
+      'Dumplings', 'Grapes', 'Bananas', 'Jalapeno',
+      'Dumplings', 'Grapes', 'Ice Cream', 'Carrots',
+      'Eggplant', 'Ice Cream', 'Carrots', 'Figs',
+      'Apples', 'Eggplant', 'Bananas', 'Jalapeno',
+      'Apples', 'Bananas', 'Eggplant', 'Jalapeno',
+      'Apples', 'Dumplings', 'Grapes', 'Apples',
+      'Grapes', 'Bananas', 'Ice Cream', 'Figs',
+      'Grapes', 'Eggplant', 'Ice Cream', 'Carrots',
+      'Apples', 'Eggplant', 'Jalapeno', 'Carrots',
+      'Apples', 'Grapes', 'Jalapeno', 'Figs',
     ]
 
     # ----------------------- Using Ruby -------------------------
@@ -335,7 +344,7 @@ describe 'ActiveRecord Obstacle Course' do
 
 
   it '16. returns the names of users who ordered one specific item' do
-    expected_result = [@user_2.name, @user_3.name]
+    expected_result = [@user_2.name, @user_3.name, @user_1.name]
 
     # ----------------------- Using Raw SQL-----------------------
     users = ActiveRecord::Base.connection.execute("
@@ -358,7 +367,7 @@ describe 'ActiveRecord Obstacle Course' do
   end
 
   it '17. returns the name of items associated with a specific order' do
-    expected_result = ['Thing 1', 'Thing 6', 'Thing 7', 'Thing 10']
+    expected_result = ['Apples', 'Grapes', 'Jalapeno', 'Figs']
 
     # ----------------------- Using Ruby -------------------------
     names = Order.last.items.all.map(&:name)
@@ -374,7 +383,7 @@ describe 'ActiveRecord Obstacle Course' do
   end
 
   it '18. returns the names of items for a users order' do
-    expected_result = ['Thing 1', 'Thing 2', 'Thing 5', 'Thing 10']
+    expected_result = ['Grapes', 'Bananas', 'Ice Cream', 'Figs']
 
     # ----------------------- Using Ruby -------------------------
     items_for_user_3_third_order = []
@@ -424,7 +433,7 @@ describe 'ActiveRecord Obstacle Course' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(average.to_i).to eq(715)
+    expect(average.to_i).to eq(749)
   end
 
 
@@ -540,13 +549,13 @@ describe 'ActiveRecord Obstacle Course' do
 
 
 
-  it '26. returns the names of items that are associated with one or more orders' do
+  xit '26. returns the names of items that are associated with one or more orders' do
     unordered_item_1 = create(:item, name: 'Unordered Item_1')
     unordered_item_2 = create(:item, name: 'Unordered Item_2')
     unordered_item_3 = create(:item, name: 'Unordered Item_3')
 
-    unordered_items = [unordered_item_1, unordered_item_2, unordered_item_3]
-    expected_result = ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6', 'Thing 7', 'Thing 9', 'Thing 10']
+    unordered_items = [unordered_item_1, unordered_item_2, unordered_item_3, @item_6.name]
+    expected_result = ['Apples', 'Bananas', 'Carrots', 'Dumplings', 'Eggplant', 'Figs', 'Grapes', 'Ice Cream', 'Jalapeno']
 
     # ----------------------- Using Ruby -------------------------
     items = Item.all
@@ -556,7 +565,7 @@ describe 'ActiveRecord Obstacle Course' do
     end.compact
 
     ordered_items_names = ordered_items.map(&:name)
-    ordered_items_names.sort_by! { |x| x[/\d+/].to_i }
+    ordered_items_names.sort
     # ------------------------------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
@@ -577,20 +586,20 @@ describe 'ActiveRecord Obstacle Course' do
     # following table of information:
     # --------------------------------------------------------------------------
     # user.name  |  total_order_count
-    # Megan      |         5
-    # Ian        |         5
-    # Sal        |         5
+    # Ian        |         4
+    # Brian      |         5
+    # Megan      |         6
 
     # ------------------ ActiveRecord Solution ----------------------
-    # custom_results =
+    custom_results = []
     # ---------------------------------------------------------------
 
-    expect(custom_results[0].name).to eq(@user_2.name)
-    expect(custom_results[0].total_order_count).to eq(5)
-    expect(custom_results[1].name).to eq(@user_1.name)
+    expect(custom_results[0].name).to eq(@user_3.name)
+    expect(custom_results[0].total_order_count).to eq(4)
+    expect(custom_results[1].name).to eq(@user_2.name)
     expect(custom_results[1].total_order_count).to eq(5)
-    expect(custom_results[2].name).to eq(@user_3.name)
-    expect(custom_results[2].total_order_count).to eq(5)
+    expect(custom_results[2].name).to eq(@user_1.name)
+    expect(custom_results[2].total_order_count).to eq(6)
   end
 
   xit '28. returns a table of information for all users items' do
@@ -605,7 +614,7 @@ describe 'ActiveRecord Obstacle Course' do
     # Ian        |         20
 
     # ------------------ ActiveRecord Solution ----------------------
-    # custom_results =
+    custom_results = []
     # ---------------------------------------------------------------
 
     expect(custom_results[0].name).to eq(@user_3.name)
@@ -619,23 +628,23 @@ describe 'ActiveRecord Obstacle Course' do
   xit '29. returns a table of information for all users orders and item counts' do
     # using a single ActiveRecord call, fetch a joined object that mimics the
     # following table of information:
-    # --------------------------------------------------------------------------
-    # user_name  |  order_id  |  item_count  |
-    # Sal        |  3         |  4           |
-    # Sal        |  6         |  4           |
-    # Sal        |  9         |  4           |
-    # Sal        |  12        |  4           |
-    # Sal        |  15        |  4           |
-    # Ian        |  2         |  4           |
-    # Ian        |  5         |  4           |
-    # Ian        |  8         |  4           |
-    # Ian        |  11        |  4           |
-    # Ian        |  14        |  4           |
-    # Megan      |  1         |  4           |
-    # Megan      |  4         |  4           |
-    # Megan      |  7         |  4           |
-    # Megan      |  10        |  4           |
-    # Megan      |  13        |  4           |
+    # ---------------------------------------
+    # user_name  | order_id  | avg_item_cost
+    # Megan      | 5         | 50
+    # Megan      | 11        | 125
+    # Megan      | 8         | 145
+    # Megan      | 14        | 150
+    # Megan      | 9         | 187
+    # Megan      | 6         | 217
+    # Ian        | 1         | 125
+    # Ian        | 12        | 162
+    # Ian        | 15        | 212
+    # Ian        | 10        | 250
+    # Brian      | 4         | 75
+    # Brian      | 3         | 137
+    # Brian      | 7         | 175
+    # Brian      | 2         | 200
+    # Brian      | 13        | 225
 
     # the raw SQL to produce this table would look like the following:
     # select
@@ -646,28 +655,28 @@ describe 'ActiveRecord Obstacle Course' do
     #   join orders on orders.user_id=users.id
     #   join order_items on order_items.order_id=orders.id
     # group by users.name, orders.id
-    # order by users.name desc, order_id asc
+    # order by user_name desc, avg_item_cost asc
     #
     # how will you turn this into the proper ActiveRecord commands?
 
     # ------------------ ActiveRecord Solution ----------------------
-    # data = []
+    data = []
     # ---------------------------------------------------------------
 
-    expect([data[0].user_name,data[0].order_id,data[0].avg_item_cost]).to eq([@user_3.name, @order_3.id, 125])
-    expect([data[1].user_name,data[1].order_id,data[1].avg_item_cost]).to eq([@user_3.name, @order_6.id, 145])
-    expect([data[2].user_name,data[2].order_id,data[2].avg_item_cost]).to eq([@user_3.name, @order_15.id, 250])
-    expect([data[3].user_name,data[3].order_id,data[3].avg_item_cost]).to eq([@user_3.name, @order_9.id, 162])
-    expect([data[4].user_name,data[4].order_id,data[4].avg_item_cost]).to eq([@user_3.name, @order_12.id, 212])
-    expect([data[5].user_name,data[5].order_id,data[5].avg_item_cost]).to eq([@user_1.name, @order_1.id, 50])
-    expect([data[6].user_name,data[6].order_id,data[6].avg_item_cost]).to eq([@user_1.name, @order_13.id, 217])
-    expect([data[7].user_name,data[7].order_id,data[7].avg_item_cost]).to eq([@user_1.name, @order_10.id, 187])
-    expect([data[8].user_name,data[8].order_id,data[8].avg_item_cost]).to eq([@user_1.name, @order_4.id, 125])
-    expect([data[9].user_name,data[9].order_id,data[9].avg_item_cost]).to eq([@user_1.name, @order_7.id, 150])
-    expect([data[10].user_name,data[10].order_id,data[10].avg_item_cost]).to eq([@user_2.name, @order_11.id, 200])
+    expect([data[0].user_name,data[0].order_id,data[0].avg_item_cost]).to eq([@user_1.name, @order_1.id, 50])
+    expect([data[1].user_name,data[1].order_id,data[1].avg_item_cost]).to eq([@user_1.name, @order_4.id, 125])
+    expect([data[2].user_name,data[2].order_id,data[2].avg_item_cost]).to eq([@user_1.name, @order_6.id, 145])
+    expect([data[3].user_name,data[3].order_id,data[3].avg_item_cost]).to eq([@user_1.name, @order_7.id, 150])
+    expect([data[4].user_name,data[4].order_id,data[4].avg_item_cost]).to eq([@user_1.name, @order_10.id, 187])
+    expect([data[5].user_name,data[5].order_id,data[5].avg_item_cost]).to eq([@user_1.name, @order_13.id, 217])
+    expect([data[6].user_name,data[6].order_id,data[6].avg_item_cost]).to eq([@user_3.name, @order_3.id, 125])
+    expect([data[7].user_name,data[7].order_id,data[7].avg_item_cost]).to eq([@user_3.name, @order_9.id, 162])
+    expect([data[8].user_name,data[8].order_id,data[8].avg_item_cost]).to eq([@user_3.name, @order_12.id, 212])
+    expect([data[9].user_name,data[9].order_id,data[9].avg_item_cost]).to eq([@user_3.name, @order_15.id, 250])
+    expect([data[10].user_name,data[10].order_id,data[10].avg_item_cost]).to eq([@user_2.name, @order_2.id, 75])
     expect([data[11].user_name,data[11].order_id,data[11].avg_item_cost]).to eq([@user_2.name, @order_5.id, 137])
-    expect([data[12].user_name,data[12].order_id,data[12].avg_item_cost]).to eq([@user_2.name, @order_2.id, 75])
-    expect([data[13].user_name,data[13].order_id,data[13].avg_item_cost]).to eq([@user_2.name, @order_8.id, 175])
+    expect([data[12].user_name,data[12].order_id,data[12].avg_item_cost]).to eq([@user_2.name, @order_8.id, 175])
+    expect([data[13].user_name,data[13].order_id,data[13].avg_item_cost]).to eq([@user_2.name, @order_11.id, 200])
     expect([data[14].user_name,data[14].order_id,data[14].avg_item_cost]).to eq([@user_2.name, @order_14.id, 225])
   end
 
