@@ -8,21 +8,21 @@ Item.destroy_all
 User.destroy_all
 
 # # DO NOT CHANGE THE ORDER OF THIS DATA TO MAKE TESTS PASS
-@user_1 = create(:user, name: 'Megan')
-@user_2 = create(:user, name: 'Brian')
-@user_3 = create(:user, name: 'Ian')
+@user_1 = create(:user, name: 'Zoolander')
+@user_2 = create(:user, name: 'Hansel')
+@user_3 = create(:user, name: 'Mugatu')
 
 # # DO NOT CHANGE THE ORDER OF THIS DATA TO MAKE TESTS PASS
-@item_1  = create(:item, name: 'Apples')
-@item_4  = create(:item, name: 'Bananas')
-@item_9  = create(:item, name: 'Carrots')
-@item_2  = create(:item, name: 'Dumplings')
-@item_5  = create(:item, name: 'Eggplant')
-@item_10 = create(:item, name: 'Figs')
-@item_3  = create(:item, name: 'Grapes')
-@item_6  = create(:item, name: 'Honey')
-@item_8  = create(:item, name: 'Ice Cream')
-@item_7  = create(:item, name: 'Jalapeno')
+@item_1  = create(:item, name: 'Abercrombie')
+@item_4  = create(:item, name: 'Banana Republic')
+@item_9  = create(:item, name: 'Calvin Klein')
+@item_2  = create(:item, name: 'Dickies')
+@item_5  = create(:item, name: 'Eddie Bauer')
+@item_10 = create(:item, name: 'Fox')
+@item_3  = create(:item, name: 'Giorgio Armani')
+@item_6  = create(:item, name: 'Hurley')
+@item_8  = create(:item, name: 'Izod')
+@item_7  = create(:item, name: 'J.crew')
 
 # DO NOT CHANGE THE ORDER OF THIS DATA TO MAKE TESTS PASS
 @order_3 = create(:order, amount: 500, items: [@item_2, @item_3, @item_4, @item_5], user: @user_3)
