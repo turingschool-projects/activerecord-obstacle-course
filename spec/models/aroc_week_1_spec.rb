@@ -19,6 +19,11 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # require 'pry'; binding.pry
+    orders_of_500 = Order.where(amount:500)
+    orders_of_200 = Order.where(amount:500)
+
+
     # ------------------------------------------------------------
 
     # Expectation
