@@ -108,7 +108,6 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     orders = Order.where(id: ids_to_find)
-    # orders = Order.where(id: [1, 3, 5, 7])     <---- Doesn't work, how to make it work? ##################
     # ------------------------------------------------------------
 
     # Expectation
@@ -139,7 +138,6 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    # require 'pry'; binding.pry
     orders_less_than_550 = Order.where("amount < ?", 550)
     # orders_less_than_550 = Order.where(amount: (0..549))
     # ------------------------------------------------------------
