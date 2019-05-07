@@ -34,10 +34,11 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     ]
 
     # ----------------------- Using Ruby -------------------------
-    orders = Order.all.sort_by { |order| order.amount }.reverse
+    # orders = Order.all.sort_by { |order| order.amount }.reverse
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
+    orders = Order.order(amount: :desc)
     # ------------------------------------------------------------
 
     # Expectation
