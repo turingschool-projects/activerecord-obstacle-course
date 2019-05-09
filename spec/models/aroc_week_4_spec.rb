@@ -11,7 +11,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 # ----------------------
 
 
-  it '21. calculates the total sales' do
+  xit '21. calculates the total sales' do
     # ---------------------- Using Ruby -------------------------
     total_sales = Order.all.map(&:amount).inject(:+)
     # -----------------------------------------------------------
@@ -24,7 +24,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expect(total_sales).to eq(9750)
   end
 
-  it '22. calculates the total sales for all but one user' do
+  xit '22. calculates the total sales for all but one user' do
     # ---------------------- Using Ruby -------------------------
     orders = Order.all.map do |order|
       order if order.user_id != @user_2.id
@@ -40,7 +40,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expect(total_sales).to eq(6500)
   end
 
-  it '23. returns all orders which include item_4' do
+  xit '23. returns all orders which include item_4' do
     expected_result = [@order_3, @order_11, @order_5, @order_13, @order_10, @order_15, @order_9]
 
     # ------------------ Inefficient Solution -------------------
@@ -56,7 +56,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expect(orders).to eq(expected_result)
   end
 
-  it '24. returns all orders for user 2 which include item_4' do
+  xit '24. returns all orders for user 2 which include item_4' do
     expected_result = [@order_11, @order_5]
 
     # ------------------ Inefficient Solution -------------------
@@ -73,7 +73,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expect(orders).to eq(expected_result)
   end
 
-  it '25. returns items that are associated with one or more orders' do
+  xit '25. returns items that are associated with one or more orders' do
     unordered_item = Item.create(name: 'Unordered Item')
     expected_result = [@item_1, @item_4, @item_9, @item_2, @item_5, @item_10, @item_3, @item_8, @item_7]
 

@@ -11,7 +11,7 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
 # ----------------------
 
 
-  it '26. returns the names of items that are associated with one or more orders' do
+  xit '26. returns the names of items that are associated with one or more orders' do
     unordered_item_1 = create(:item, name: 'Unordered Item_1')
     unordered_item_2 = create(:item, name: 'Unordered Item_2')
     unordered_item_3 = create(:item, name: 'Unordered Item_3')

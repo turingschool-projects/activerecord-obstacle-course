@@ -11,7 +11,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 # ----------------------
 
 
-  it '16. returns the names of users who ordered one specific item' do
+  xit '16. returns the names of users who ordered one specific item' do
     expected_result = [@user_2.name, @user_3.name, @user_1.name]
 
     # ----------------------- Using Raw SQL-----------------------
@@ -34,7 +34,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expect(users).to eq(expected_result)
   end
 
-  it '17. returns the name of items associated with a specific order' do
+  xit '17. returns the name of items associated with a specific order' do
     expected_result = ['Abercrombie', 'Giorgio Armani', 'J.crew', 'Fox']
 
     # ----------------------- Using Ruby -------------------------
@@ -50,7 +50,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expect(names).to eq(expected_result)
   end
 
-  it '18. returns the names of items for a users order' do
+  xit '18. returns the names of items for a users order' do
     expected_result = ['Giorgio Armani', 'Banana Republic', 'Izod', 'Fox']
 
     # ----------------------- Using Ruby -------------------------
@@ -74,7 +74,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expect(items_for_user_3_third_order).to eq(expected_result)
   end
 
-  it '19. returns the average amount for all orders' do
+  xit '19. returns the average amount for all orders' do
     # ---------------------- Using Ruby -------------------------
     average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
     # -----------------------------------------------------------
@@ -87,7 +87,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expect(average).to eq(650)
   end
 
-  it '20. returns the average amount for all orders for one user' do
+  xit '20. returns the average amount for all orders for one user' do
     # ---------------------- Using Ruby -------------------------
     orders = Order.all.map do |order|
       order if order.user_id == @user_3.id
