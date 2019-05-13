@@ -72,6 +72,8 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_of_500_and_700 = Order.where("amount = 500 OR amount = 700")
+    orders_of_700_and_1000 = Order.where("amount = 700 OR amount = 1000")
     # ------------------------------------------------------------
 
     # Expectation
