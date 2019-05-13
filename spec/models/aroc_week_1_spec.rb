@@ -18,8 +18,10 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    orders_of_500 = Order.all.where("amount = 500")
+    orders_of_200 = Order.all.where("amount = 200")
     # ------------------------------------------------------------
+
 
     # Expectation
     expect(orders_of_500.count).to eq(1)
@@ -34,6 +36,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     # Your solution should not contain the ID of the order anywhere
+    
     # ------------------------------------------------------------
 
     # Expectation
