@@ -107,6 +107,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders = Order.where("id IN (?)", ids_to_find)
     # ------------------------------------------------------------
 
     # Expectation
