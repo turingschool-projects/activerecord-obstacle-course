@@ -80,6 +80,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items = Item.where.not("items.id IN (?)", items_not_included)
     # ------------------------------------------------------------
 
     # Expectation
