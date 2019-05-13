@@ -91,6 +91,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items = Item.where("id IN (?)", ids_to_find)
     # ------------------------------------------------------------
 
     # Expectation
