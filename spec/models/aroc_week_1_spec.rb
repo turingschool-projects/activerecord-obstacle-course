@@ -36,7 +36,8 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     # Your solution should not contain the ID of the order anywhere
-    
+    # require 'pry'; binding.pry
+    order_id = Order.order("amount ASC").limit(1).pluck(:id).first
     # ------------------------------------------------------------
 
     # Expectation
