@@ -72,38 +72,41 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    binding.pry
-    items_for_user_3_third_order = Order.all
-    # ------------------------------------------------------------
+    #sql = SELECT name FROM items INNER JOIN order_items ON items.id = order_items.item_id INNER JOIN orders ON order_items.order_id = orders.id WHERE orders.user_id = 3 AND order_items.order_id = 12;
+
+    items_for_user_3_third_order = Item.joins(:orders).where('orders.user_id = 3 AND order_items.order_id = 12').pluck(:name)
+    # -----------------------------------------------------------
 
     # Expectation
     expect(items_for_user_3_third_order).to eq(expected_result)
   end
 
- xit '19. returns the average amount for all orders' do
+ it '19. returns the average amount for all orders' do
     # ---------------------- Using Ruby -------------------------
-    average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
+    # average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
     # -----------------------------------------------------------
-
+    # SELECT AVG(amount) FROM orders;
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+      average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
     expect(average).to eq(650)
   end
 
- xit '20. returns the average amount for all orders for one user' do
+ it '20. returns the average amount for all orders for one user' do
     # ---------------------- Using Ruby -------------------------
-    orders = Order.all.map do |order|
-      order if order.user_id == @user_3.id
-    end.select{|i| !i.nil?}
+   # orders = Order.all.map do |order|
+   #   order if order.user_id == @user_3.id
+   # end.select{|i| !i.nil?}
 
-    average = (orders.map(&:amount).inject(:+)) / (orders.count)
+   # average = (orders.map(&:amount).inject(:+)) / (orders.count)
     # -----------------------------------------------------------
-
+#SQL = SELCT AVG(amount) FROM orders WHERE user_id = 3;
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.where(user_id: 3).average(:amount)
+
+    
     # ------------------------------------------------------------
 
     # Expectation
