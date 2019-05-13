@@ -20,6 +20,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_of_user_3 = Order.where("orders.user_id = (?)", @user_3.id)
     # ------------------------------------------------------------
 
     # Expectation
