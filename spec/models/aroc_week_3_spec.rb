@@ -97,15 +97,15 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
   it '20. returns the average amount for all orders for one user' do
     # ---------------------- Using Ruby -------------------------
-    orders = Order.all.map do |order|
-      order if order.user_id == @user_3.id
-    end.select{|i| !i.nil?}
+    # orders = Order.all.map do |order|
+    #   order if order.user_id == @user_3.id
+    # end.select{|i| !i.nil?}
 
-    average = (orders.map(&:amount).inject(:+)) / (orders.count)
+    # average = (orders.map(&:amount).inject(:+)) / (orders.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.joins(:user).where(user: @user_3.id).average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
