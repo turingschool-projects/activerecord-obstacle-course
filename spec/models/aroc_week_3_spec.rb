@@ -28,8 +28,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     users = User.select(:name)
-                .joins(:orders)
-                .joins(:order_items)
+                .joins(:items)
                 .where("order_items.item_id=#{@item_8.id}")
                 .order(:name)
                 .distinct
@@ -73,7 +72,10 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    # items_for_user_3_third_order = Order.joins(:user)
+    #     .select('items.name, users.id')
+    #     .where("users.id = #{@user_3.id}")
+    #     .pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -82,11 +84,11 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
   it '19. returns the average amount for all orders' do
     # ---------------------- Using Ruby -------------------------
-    average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
+    # average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
