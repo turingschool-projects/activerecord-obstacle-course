@@ -92,7 +92,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
@@ -109,7 +109,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.where(user: @user_3).average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
