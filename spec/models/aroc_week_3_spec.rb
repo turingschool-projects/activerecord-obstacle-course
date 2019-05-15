@@ -27,7 +27,11 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    users = OrderItem.joins(order: :user)
+                     .where(item_id: @item_8.id)
+                     .order("users.name")
+                     .distinct
+                     .pluck("users.name")
     # ------------------------------------------------------------
 
     # Expectation
@@ -43,7 +47,11 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    last_order = Order.last
+    names = OrderItem.joins(:item)
+                     .joins(:order)
+                     .where(order_id: last_order.id)
+                     .pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -67,7 +75,11 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    order_id = Order.where(user_id: @user_3.id).third.id
+    items_for_user_3_third_order = OrderItem.joins(:item)
+                                            .joins(:order)
+                                            .where("orders.id = #{order_id}")
+                                            .pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
