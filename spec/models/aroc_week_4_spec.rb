@@ -95,9 +95,8 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ ActiveRecord Solution ----------------------
     ordered_items = Item.joins(:order_items)
-                        .select('items.*, count(order_items.item_id) AS item_count')
-                        .group(:id)
-                        .having('item_count > 1')
+                        .distinct
+                        .order(:id)
     # ---------------------------------------------------------------
 
     # Expectations
