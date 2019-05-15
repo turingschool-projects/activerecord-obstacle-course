@@ -17,7 +17,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ---------------------
-    # Solution goes here
+    total_sales = Order.sum(:amount)
     # -----------------------------------------------------------
 
     # Expectation
@@ -33,7 +33,8 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ---------------------
-    # Solution goes here
+    total_sales = Order.where.not("user_id = #{@user_2.id}")
+                       .sum(:amount)
     # -----------------------------------------------------------
 
     # Expectation
@@ -49,7 +50,9 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # -----------------------------------------------------------
 
     # ------------------ Improved Solution ----------------------
-    #  Solution goes here
+    orders = Order.joins(:order_items)
+                  .select('orders.*, order_items.item_id')
+                  .where("order_items.item_id = #{@item_4.id}")
     # -----------------------------------------------------------
 
     # Expectation
@@ -66,7 +69,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # -----------------------------------------------------------
 
     # ------------------ Improved Solution ----------------------
-    #  Solution goes here
+    orders = @user_2.orders
+                    .joins(:order_items)
+                    .select("orders.*, order_items.item_id")
+                    .where("order_items.item_id = #{@item_4.id}")
     # -----------------------------------------------------------
 
     # Expectation
@@ -88,7 +94,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # ------------------------------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
-    # Solution goes here
+    ordered_items = Item.joins(:order_items)
+                        .select('items.*, count(order_items.item_id) AS item_count')
+                        .group(:id)
+                        .having('item_count > 1')
     # ---------------------------------------------------------------
 
     # Expectations
