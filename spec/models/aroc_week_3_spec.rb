@@ -72,8 +72,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    binding.pry
-    items_for_user_3_third_order = User.
+    items_for_user_3_third_order = Order.where(user_id: 3).third.items.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -82,11 +81,12 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
   it '19. returns the average amount for all orders' do
     # ---------------------- Using Ruby -------------------------
-    average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
+    # average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
@@ -99,11 +99,12 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
       order if order.user_id == @user_3.id
     end.select{|i| !i.nil?}
 
-    average = (orders.map(&:amount).inject(:+)) / (orders.count)
+    # average = (orders.map(&:amount).inject(:+)) / (orders.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.where(user_id: 3).average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
