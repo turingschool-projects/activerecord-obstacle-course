@@ -41,6 +41,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     orders = Order.order("orders.amount DESC")
+    # orders = Order.order(amount: :desc)
     # ------------------------------------------------------------
 
     # Expectation
@@ -152,7 +153,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    require 'pry'; binding.pry
+    names = Order.joins(:items).pluck("items.name")
     # ------------------------------------------------------------
 
     # Expectation
