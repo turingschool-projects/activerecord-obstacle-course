@@ -97,6 +97,8 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+
+    grouped_items = Order.find(@order_3.id).items.order('items.name')
     # ------------------------------------------------------------
 
     # Expectation
@@ -112,6 +114,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    names = Item.all.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
