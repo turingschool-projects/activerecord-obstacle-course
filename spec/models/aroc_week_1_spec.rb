@@ -53,6 +53,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # Solution goes here
     # Your solution should not contain the ID of the order anywhere
     order_id = Order.order("amount DESC").limit(1).pluck(:id).first
+    # order_id = Order.order(amount: :desc).first.id
     # ------------------------------------------------------------
 
     # Expectation
@@ -91,6 +92,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # require 'pry'; binding.pry
     items = Item.where("id IN (?)", ids_to_find)
     # ------------------------------------------------------------
 
@@ -122,7 +124,8 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    orders_between_700_and_1000 = Order.where("orders.amount >= 700 AND orders.amount <= 1000")
+    orders_between_700_and_1000 = Order.where("orders.amount >= ? AND orders.amount <= ?", 700, 1000)
+    # orders_between_700_and_1000 = Order.where(amount: 700..1000)
     # ------------------------------------------------------------
 
     # Expectation
@@ -138,7 +141,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    orders_less_than_550 = Order.where("orders.amount < 550")
+    orders_less_than_550 = Order.where("orders.amount < ?", 550)
     # ------------------------------------------------------------
 
     # Expectation
