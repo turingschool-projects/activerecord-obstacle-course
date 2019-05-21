@@ -91,13 +91,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # grouped_items = order.items.sort_by { |item| item.name }
     # ------------------------------------------------------------
 
-    `rails generate migration CreateBooks title:string author:references`
-
-
     # ------------------ Using ActiveRecord ----------------------
     grouped_items = Item.joins(:orders)
                         .group(:name)
-                        .where('order_id = ?', @order_3.id)
+                        .where(orders: {id: @order_3.id})
     # ------------------------------------------------------------
 
     # Expectation

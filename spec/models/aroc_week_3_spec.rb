@@ -28,7 +28,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     users = User.joins(:order_items)
-                .where('order_items.item_id = ?', @item_8.id)
+                .where(order_items: {item_id: @item_8.id})
                 .distinct
                 .order(:name)
                 .pluck(:name)
@@ -73,7 +73,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------ Using ActiveRecord ----------------------
     items_for_user_3_third_order = Order.joins(:order_items)
                                         .joins(:user)
-                                        .where('users.id = ?', @user_3.id)
+                                        .where(users: {id: @user_3.id})
                                         .group(:order_id)
                                         .third
                                         .items
@@ -108,7 +108,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     average = Order.joins(:user)
-                   .where('orders.user_id = ?', @user_3.id)
+                   .where(user_id: @user_3.id)
                    .average(:amount)
     # ------------------------------------------------------------
 
