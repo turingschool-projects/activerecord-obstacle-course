@@ -59,23 +59,23 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expected_result = ['Giorgio Armani', 'Banana Republic', 'Izod', 'Fox']
 
     # ----------------------- Using Ruby -------------------------
-    items_for_user_3_third_order = []
-    grouped_orders = []
-    Order.all.each do |order|
-      if order.items
-        grouped_orders << order if order.user_id == @user_3.id
-      end
-    end
-    grouped_orders.each_with_index do |order, idx|
-      items_for_user_3_third_order = order.items.map(&:name) if idx == 2
-    end
+    # items_for_user_3_third_order = []
+    # grouped_orders = []
+    # Order.all.each do |order|
+    #   if order.items
+    #     grouped_orders << order if order.user_id == @user_3.id
+    #   end
+    # end
+    # grouped_orders.each_with_index do |order, idx|
+    #   items_for_user_3_third_order = order.items.map(&:name) if idx == 2
+    # end
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # items_for_user_3_third_order = Order.joins(:user)
-    #     .select('items.name, users.id')
-    #     .where("users.id = #{@user_3.id}")
-    #     .pluck(:name)
+    items_for_user_3_third_order = Order.joins(:user)
+        .where("users.id = #{@user_3.id}")[2]
+        .items
+        .pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
