@@ -18,6 +18,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ Using ActiveRecord ---------------------
     # Solution goes here
+    total_sales = Order.sum(:amount)
     # -----------------------------------------------------------
 
     # Expectation
@@ -34,6 +35,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ Using ActiveRecord ---------------------
     # Solution goes here
+    total_sales = Order.where.not(user_id: @user_2.id).sum(:amount)
     # -----------------------------------------------------------
 
     # Expectation
@@ -50,6 +52,12 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ Improved Solution ----------------------
     #  Solution goes here
+    # SELECT *
+    # FROM orders
+    # JOINS order_items
+    #   ON orders.id
+    # WHERE order_items.item_id = @item_4.id
+    orders = Order.joins(:order_items).where("order_items.item_id = ? ", @item_4.id)
     # -----------------------------------------------------------
 
     # Expectation
@@ -60,13 +68,18 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expected_result = [@order_11, @order_5]
 
     # ------------------ Inefficient Solution -------------------
-    orders = Order.where(user: @user_2)
-    order_ids = OrderItem.where(order_id: orders, item: @item_4).map(&:order_id)
-    orders = order_ids.map { |id| Order.find(id) }
+    # orders = Order.where(user: @user_2)
+    # order_ids = OrderItem.where(order_id: orders, item: @item_4).map(&:order_id)
+    # orders = order_ids.map { |id| Order.find(id) }
     # -----------------------------------------------------------
 
     # ------------------ Improved Solution ----------------------
     #  Solution goes here
+    # require 'pry'; binding.pry
+    orders = Order.joins(:order_items).where("order_items.item_id = #{@item_4.id}").where(user_id: @user_2.id)
+    orders = Order.joins(:order_items).where(user_id: @user_2.id, order_items: {item_id: @item_4.id})
+    # orders = Order.joins(:order_items).where(user: @user_2).where("item_id = ?", @item_4)
+    # orders = Order.joins(:order_items).where("order_items.item_id = ?", @item_4.id).where("orders.user_id = ?", @user_2.id)
     # -----------------------------------------------------------
 
     # Expectation
@@ -78,17 +91,20 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     expected_result = [@item_1, @item_4, @item_9, @item_2, @item_5, @item_10, @item_3, @item_8, @item_7]
 
     # ----------------------- Using Ruby -------------------------
-    items = Item.all
-
-    ordered_items = items.map do |item|
-      item if item.orders.present?
-    end
-
-    ordered_items = ordered_items.compact
+    # items = Item.all
+    #
+    # ordered_items = items.map do |item|
+    #   item if item.orders.present?
+    # end
+    #
+    # ordered_items = ordered_items.compact
     # ------------------------------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
     # Solution goes here
+    ordered_items = Item.left_joins(:order_items).distinct.where.not("order_items.item_id IS NULL")
+
+    ordered_items = Item.joins(:orders).distinct.order(:name)
     # ---------------------------------------------------------------
 
     # Expectations

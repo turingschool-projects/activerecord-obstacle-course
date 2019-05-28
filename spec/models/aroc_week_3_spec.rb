@@ -15,19 +15,24 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expected_result = [@user_2.name, @user_3.name, @user_1.name]
 
     # ----------------------- Using Raw SQL-----------------------
-    users = ActiveRecord::Base.connection.execute("
-      select
-        distinct users.name
-      from users
-        join orders on orders.user_id=users.id
-        join order_items ON order_items.order_id=orders.id
-      where order_items.item_id=#{@item_8.id}
-      ORDER BY users.name")
-    users = users.map {|u| u['name']}
+    # users = ActiveRecord::Base.connection.execute("
+    #   select
+    #     distinct users.name
+    #   from users
+    #     join orders on orders.user_id=users.id
+    #     join order_items ON order_items.order_id=orders.id
+    #   where order_items.item_id=#{@item_8.id}
+
+
+
+
+    #   ORDER BY users.name")
+    # users = users.map {|u| u['name']}
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    users = User.joins(:order_items).distinct.where("order_items.item_id = ?", @item_8.id).order(:name).pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -39,11 +44,12 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ----------------------- Using Ruby -------------------------
     names = Order.last.items.all.map(&:name)
-    names.sort_by! { |x| x[/\d+/].to_i }
+    # names.sort_by! { |x| x[/\d+/].to_i }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    names = Order.last.items.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -68,6 +74,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items_for_user_3_third_order = Order.where(user_id: @user_3.id).third.items.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -81,6 +88,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
@@ -98,6 +106,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.where(user_id: @user_3.id).average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
