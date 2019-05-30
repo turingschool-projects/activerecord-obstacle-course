@@ -28,8 +28,9 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # require "pry"; binding.pry
-    users = User.joins(:orders).joins(:order_items).where("order_items.item_id=9").order(:name).pluck(:name).uniq
-    # ------------------------------------------------------------
+    users = User.joins(:items).select('users.name').where("items.id = ?", @item_8.id).distinct.order(:name)
+    .pluck(:name)
+    # # ------------------------------------------------------------
 
     # Expectation
     expect(users).to eq(expected_result)
@@ -68,7 +69,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    items_for_user_3_third_order = @user_3.orders.third.items.pluck(:name)
+    items_for_user_3_third_order = User.find(@user_3.id).orders[2].items.pluck(:name)
 
     # ------------------------------------------------------------
 

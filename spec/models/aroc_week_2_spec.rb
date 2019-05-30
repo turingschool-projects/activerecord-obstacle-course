@@ -35,7 +35,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     ]
 
     # ----------------------- Using Ruby -------------------------
-    orders = Order.all.sort_by { |order| order.amount }.reverse
+    orders = Order.order(amount: :desc)
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
@@ -77,7 +77,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    items = Item.where.not(id: [@item_2.id, @item_5.id, @item_6.id])
+    items = Item.where.not(id: items_not_included)
     # ------------------------------------------------------------
 
     # Expectation
@@ -93,7 +93,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    grouped_items = Order.find(@order_3.id).items.order(:name)
+    grouped_items =  Order.find(@order_3.id).items.order(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -145,7 +145,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    name = Order.joins(:items).select('items.name').pluck(:name)
+    name = Order.joins(:items).pluck(:name)
 
     # ------------------------------------------------------------
 

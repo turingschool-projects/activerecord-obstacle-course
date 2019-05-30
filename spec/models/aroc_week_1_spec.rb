@@ -18,8 +18,8 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    orders_of_500 = Order.where(amount: 500)
-    orders_of_200 = Order.where(amount: 200)
+      orders_of_500 = Order.where(amount: 200)
+      orders_of_200 = Order.where(amount: 500)
     # ------------------------------------------------------------
 
     # Expectation
@@ -34,7 +34,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-      order_id = Order.select(:id).order(:amount).limit(1).pluck(:id).first
+      order_id = Order.order(:amount).first.id
     # ------------------------------------------------------------
 
     # Expectation
@@ -48,7 +48,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-      order_id = Order.select(:id).order(amount: :desc).limit(1).pluck(:id).first
+      order_id =  Order.order(amount: :desc).first.id
     # ------------------------------------------------------------
 
     # Expectation
@@ -68,7 +68,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     orders_of_500_and_700 = Order.where(amount: [500, 700])
-    orders_of_700_and_1000 = Order.where(amount: [700, 1000])
+    orders_of_700_and_1000 = Order.where(amount: [1000, 700])
     # ------------------------------------------------------------
 
     # Expectation

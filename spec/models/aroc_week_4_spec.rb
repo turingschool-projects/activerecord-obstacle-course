@@ -50,7 +50,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ Improved Solution ----------------------
 
-    orders = Order.joins(:order_items).select('orders.*, order_items.item_id').where("order_items.item_id = #{@item_4.id}")
+    orders = Order.joins(:order_items).where("order_items.item_id = ?",@item_4.id)
 
 
 
@@ -72,7 +72,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
 
     # ------------------ Improved Solution ----------------------
 
-    orders = @user_2.orders.joins(:order_items).select('orders.*, order_items.item_id').where("order_items.item_id = #{@item_4.id}")
+    orders = User.find(@user_2.id).orders.joins(:order_items).where("order_items.item_id = ?",@item_4.id)
     # -----------------------------------------------------------
 
     # Expectation
@@ -94,7 +94,7 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # ------------------------------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
-    ordered_items = Item.joins(:order_items).select('items.*, order_items.item_id').order(:id).distinct
+    ordered_items = Item.joins(:orders).distinct.order(:id)
     # ---------------------------------------------------------------
 
     # Expectations
