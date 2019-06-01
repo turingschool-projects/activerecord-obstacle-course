@@ -158,6 +158,8 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
 
   it '30. returns the names of items that have been ordered without n+1 queries' do
     # What is an n+1 query?
+    # A query within another query, which is resource-intensive
+    
     # This video is older, but the concepts explained are still relevant:
     # http://railscasts.com/episodes/372-bullet
 
@@ -167,10 +169,7 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
     Bullet.start_request
 
     # ------------------------------------------------------
-    orders = Order.items(:items).includes(:name) # Edit only this line
-
-    # cats = Category.order(:name).includes(:products)
-
+    orders = Order.includes(:items)
     # ------------------------------------------------------
 
     # Do not edit below this line
