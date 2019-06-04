@@ -19,7 +19,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-      orders_of_user_3 = Order.where(user_id: @user_3.id)
+      orders_of_user_3 = Order.where(user: @user_3)
     # ------------------------------------------------------------
 
     # Expectation
