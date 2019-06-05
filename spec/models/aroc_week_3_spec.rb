@@ -27,7 +27,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    users = User.distinct.joins(:order_items).where("order_items.item_id = #{@item_8.id}").order(:name).pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -43,7 +43,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    names = Item.joins(:order_items).where("order_items.order_id = #{@order_12.id}").pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -67,7 +67,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    items_for_user_3_third_order = Item.joins(order_items: [:order]).where("orders.user_id = #{@user_3.id}").offset(8).limit(4).pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
@@ -80,7 +80,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
@@ -97,7 +97,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    average = Order.where(user: @user_3).average(:amount)
     # ------------------------------------------------------------
 
     # Expectation
