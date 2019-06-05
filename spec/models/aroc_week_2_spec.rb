@@ -20,7 +20,6 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using Acti(veRecord ----------------------
     # Solution goes here
-    # binding.pry
     orders_of_user_3 = Order.where(user_id: @user_3.id)
     # ------------------------------------------------------------
 
@@ -163,7 +162,6 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
-    # binding.pry
     names = Order.joins(:items).pluck(:name)
     names = Order.joins(:items).pluck("items.name")
     # ------------------------------------------------------------

@@ -47,7 +47,6 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     names = Order.joins(:items).last.items.pluck(:name)
-    # binding.pry
     # ------------------------------------------------------------
 
     # Expectation

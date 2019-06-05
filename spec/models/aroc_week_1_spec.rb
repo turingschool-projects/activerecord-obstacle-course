@@ -38,6 +38,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     order_id = Order.select(:id).order(:amount).limit(1).pluck(:id).first
     order_id = Order.order(:amount).first[:id]
 
+
     # ------------------------------------------------------------
 
     # Expectation
