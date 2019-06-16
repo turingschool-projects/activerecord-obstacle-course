@@ -2,10 +2,6 @@
 
 We've gotten fairly familiar with ActiveRecord's most common methods. Let's make sure we don't get rusty with those other less-frequently used methods.
 
-For Backend Module 2 students, this obstacle course is meant to test your knowledge over the course of the entire inning. We do not expect (nor encourage) you to finish this earlier than week 4.
-
-**A completed pull request is due in week 6 as a deliverable to graduate the module.**
-
 The first few portions of this obstacle course are meant to test your knowledge around processing things in Ruby to put more of that work on the database (PostgreSQL) to make our own code easier to maintain. Your job will be to remove the code that processes data in Ruby, and replace that code with proper ActiveRecord commands to do the exact same work.
 
 **There will be more than one way to solve some of these problems.** If you want feedback on your approach, please tag your instructors on GitHub for a code review.
@@ -68,7 +64,7 @@ rspec
 
 ## Extensions
 
-If you finish everything in here before week 6, you're welcome to take on the following extensions:
+If you finish everything in here, you're welcome to take on the following extensions:
 
 * Break your solutions into scopes and/or class methods.
 * Try to implement one example using ActiveRecord's `merge`.
