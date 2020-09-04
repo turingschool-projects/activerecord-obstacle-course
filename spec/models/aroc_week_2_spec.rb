@@ -80,7 +80,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(items).to eq(expected_result)
+    expect(items.sort).to eq(expected_result.sort)
   end
 
   it "13. groups an order's items by name" do
@@ -148,6 +148,6 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(names).to eq(expected_result)
+    expect(names.sort).to eq(expected_result.sort)
   end
 end

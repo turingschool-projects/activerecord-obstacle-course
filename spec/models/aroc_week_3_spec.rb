@@ -39,7 +39,6 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ----------------------- Using Ruby -------------------------
     names = Order.last.items.all.map(&:name)
-    names.sort_by! { |x| x[/\d+/].to_i }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
@@ -47,7 +46,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(names).to eq(expected_result)
+    expect(names.sort).to eq(expected_result.sort)
   end
 
   it '18. returns the names of items for a users order' do
@@ -71,7 +70,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(items_for_user_3_third_order).to eq(expected_result)
+    expect(items_for_user_3_third_order.sort).to eq(expected_result.sort)
   end
 
   it '19. returns the average amount for all orders' do

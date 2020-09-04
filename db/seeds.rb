@@ -1,5 +1,3 @@
-require 'factory_bot_rails'
-
 include FactoryBot::Syntax::Methods
 
 OrderItem.destroy_all

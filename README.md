@@ -23,6 +23,12 @@ rspec
 # you should see several passing tests, and a few skipped tests
 ```
 
+You may also find that the `rails db:migrate` command does not migrate the test database. If so, you can do this with:
+
+```
+rails db:migrate RAILS_ENV=test
+```
+
 3. **You must not change the setup or expectations of any test.**
 
 4. Start with the top test within `spec/models/activerecord_obstacle_course_spec.rb` and work in order.
