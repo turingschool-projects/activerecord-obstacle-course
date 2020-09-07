@@ -51,54 +51,57 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     expect(names.sort).to eq(expected_result.sort)
   end
 
-  xit '18. returns the names of items for a users order' do
+  it '18. returns the names of items for a users order' do
     expected_result = ['Giorgio Armani', 'Banana Republic', 'Izod', 'Fox']
 
     # ----------------------- Using Ruby -------------------------
-    items_for_user_3_third_order = []
-    grouped_orders = []
-    Order.all.each do |order|
-      if order.items
-        grouped_orders << order if order.user_id == @user_3.id
-      end
-    end
-    grouped_orders.each_with_index do |order, idx|
-      items_for_user_3_third_order = order.items.map(&:name) if idx == 2
-    end
+    # items_for_user_3_third_order = []
+    # grouped_orders = []
+    # Order.all.each do |order|
+    #   if order.items
+    #     grouped_orders << order if order.user_id == @user_3.id
+    #   end
+    # end
+    # grouped_orders.each_with_index do |order, idx|
+    #   items_for_user_3_third_order = order.items.map(&:name) if idx == 2
+    # end
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    items_for_user_3_third_order = Order.where(user_id: @user_3.id)[2].items.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
     expect(items_for_user_3_third_order.sort).to eq(expected_result.sort)
   end
 
-  xit '19. returns the average amount for all orders' do
+  it '19. returns the average amount for all orders' do
     # ---------------------- Using Ruby -------------------------
-    average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
+    # average = (Order.all.map(&:amount).inject(:+)) / (Order.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.average(:amount).to_i
     # ------------------------------------------------------------
 
     # Expectation
     expect(average).to eq(650)
   end
 
-  xit '20. returns the average amount for all orders for one user' do
+  it '20. returns the average amount for all orders for one user' do
     # ---------------------- Using Ruby -------------------------
-    orders = Order.all.map do |order|
-      order if order.user_id == @user_3.id
-    end.select{|i| !i.nil?}
-
-    average = (orders.map(&:amount).inject(:+)) / (orders.count)
+    # orders = Order.all.map do |order|
+    #   order if order.user_id == @user_3.id
+    # end.select{|i| !i.nil?}
+    #
+    # average = (orders.map(&:amount).inject(:+)) / (orders.count)
     # -----------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    average = Order.where(user_id: @user_3.id).average(:amount).to_i
     # ------------------------------------------------------------
 
     # Expectation
