@@ -29,14 +29,13 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     users = User.order(:name).find(@item_8.orders.pluck(:user_id)).pluck(:name)
-    # require "pry"; binding.pry
     # ------------------------------------------------------------
 
     # Expectation
     expect(users).to eq(expected_result)
   end
 
-  xit '17. returns the name of items associated with a specific order' do
+  it '17. returns the name of items associated with a specific order' do
     expected_result = ['Abercrombie', 'Giorgio Armani', 'J.crew', 'Fox']
 
     # ----------------------- Using Ruby -------------------------
@@ -45,6 +44,7 @@ describe 'ActiveRecord Obstacle Course, Week 3' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    names = Order.last.items.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
