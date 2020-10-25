@@ -23,6 +23,8 @@ rspec
 # you should see several passing tests, and a few skipped tests
 ```
 
+If you run into bundle issues then delete the `Gemfile.lock` and then run `bundle install`
+
 You may also find that the `rails db:migrate` command does not migrate the test database. If so, you can do this with:
 
 ```
