@@ -100,15 +100,15 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(grouped_items).to eq(expected_result)
   end
 
-  xit '14. plucks all values from one column' do
+  it '14. plucks all values from one column' do
     expected_result = ['Abercrombie', 'Banana Republic', 'Calvin Klein', 'Dickies', 'Eddie Bauer', 'Fox', 'Giorgio Armani', 'Hurley', 'Izod', 'J.crew']
 
     # ----------------------- Using Ruby -------------------------
-    names = Item.all.map(&:name)
+    # names = Item.all.map(&:name)
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    names = Item.all.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
