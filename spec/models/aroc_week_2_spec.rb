@@ -84,16 +84,16 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(items.sort).to eq(expected_result.sort)
   end
 
-  xit "13. groups an order's items by name" do
+  it "13. groups an order's items by name" do
     expected_result = [@item_4, @item_2, @item_5, @item_3]
 
     # ----------------------- Using Ruby -------------------------
-    order = Order.find(@order_3.id)
-    grouped_items = order.items.sort_by { |item| item.name }
+    # order = Order.find(@order_3.id)
+    # grouped_items = order.items.sort_by { |item| item.name }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    grouped_items = Order.where(amount: 500).first.items.order(:name)
     # ------------------------------------------------------------
 
     # Expectation
