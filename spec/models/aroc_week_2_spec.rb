@@ -15,18 +15,19 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expected_result = [@order_3, @order_15, @order_9, @order_12]
 
     # ----------------------- Using Ruby -------------------------
-    orders_of_user_3 = Order.all.select { |order| order.user_id == @user_3.id }
+    # orders_of_user_3 = Order.all.select { |order| order.user_id == @user_3.id }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    user3_id = User.where(name: 'Mugatu').first.id
+    orders_of_user_3 = Order.joins(:user).where(user_id: user3_id)
     # ------------------------------------------------------------
 
     # Expectation
     expect(orders_of_user_3).to eq(expected_result)
   end
 
-  it '10. sorts the orders from most expensive to least expensive' do
+  xit '10. sorts the orders from most expensive to least expensive' do
     expected_result = [
       @order_15, @order_14, @order_13, @order_12, @order_11,
       @order_10, @order_8, @order_9, @order_7, @order_6,
@@ -45,7 +46,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(orders).to eq(expected_result)
   end
 
-  it '11. sorts the orders from least expensive to most expensive' do
+  xit '11. sorts the orders from least expensive to most expensive' do
     expected_result = [
       @order_1, @order_2, @order_3, @order_4, @order_5,
       @order_6, @order_7, @order_9, @order_8, @order_10,
@@ -64,7 +65,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(orders).to eq(expected_result)
   end
 
-  it '12. should return all items except items 2, 5 and 6' do
+  xit '12. should return all items except items 2, 5 and 6' do
     items_not_included = [@item_2, @item_5, @item_6]
     expected_result = [
       @item_1, @item_4, @item_9, @item_10,
@@ -83,7 +84,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(items.sort).to eq(expected_result.sort)
   end
 
-  it "13. groups an order's items by name" do
+  xit "13. groups an order's items by name" do
     expected_result = [@item_4, @item_2, @item_5, @item_3]
 
     # ----------------------- Using Ruby -------------------------
@@ -99,7 +100,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(grouped_items).to eq(expected_result)
   end
 
-  it '14. plucks all values from one column' do
+  xit '14. plucks all values from one column' do
     expected_result = ['Abercrombie', 'Banana Republic', 'Calvin Klein', 'Dickies', 'Eddie Bauer', 'Fox', 'Giorgio Armani', 'Hurley', 'Izod', 'J.crew']
 
     # ----------------------- Using Ruby -------------------------
@@ -114,7 +115,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     expect(names).to eq(expected_result)
   end
 
-  it '15. gets all item names associated with all orders' do
+  xit '15. gets all item names associated with all orders' do
     expected_result = [
       'Dickies', 'Giorgio Armani', 'Banana Republic', 'Eddie Bauer',
       'Eddie Bauer', 'Banana Republic', 'J.crew', 'Calvin Klein',
