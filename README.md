@@ -37,9 +37,9 @@ rails db:migrate RAILS_ENV=test
 
 5. To run your tests, you can run `rspec spec/models/activerecord_obstacle_course_spec.rb`
 
-6. If you want to run one specific test, you can run `rspec spec/models/activerecord_obstacle_course_spec.rb:LINE_NUMBER`.
+6. If you want to run one specific test, you can run `rspec spec/models/aroc_week_1_spec.rb:LINE_NUMBER`.
 
-    * For example: `rspec spec/models/activerecord_obstacle_course_spec.rb:34`
+    * For example: `rspec spec/models/aroc_week_1_spec.rb:34`
 
 7. Most of the tests follow the same format...
 

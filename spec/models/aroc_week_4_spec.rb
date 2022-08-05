@@ -20,6 +20,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # Solution goes here
     # -----------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(total_sales).to eq(9750)
   end
@@ -35,6 +39,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # ------------------ Using ActiveRecord ---------------------
     # Solution goes here
     # -----------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
 
     # Expectation
     expect(total_sales).to eq(6500)
@@ -52,6 +60,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     #  Solution goes here
     # -----------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(orders).to eq(expected_result)
   end
@@ -68,6 +80,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # ------------------ Improved Solution ----------------------
     #  Solution goes here
     # -----------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
 
     # Expectation
     expect(orders).to eq(expected_result)
@@ -90,6 +106,10 @@ describe 'ActiveRecord Obstacle Course, Week 4' do
     # ------------------ ActiveRecord Solution ----------------------
     # Solution goes here
     # ---------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
 
     # Expectations
     expect(ordered_items).to eq(expected_result)

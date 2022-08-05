@@ -13,12 +13,19 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
   it '1. finds orders by amount' do
     # ----------------------- Using Ruby -------------------------
-    orders_of_500 = Order.all.select { |order| order.amount == 500 }
-    orders_of_200 = Order.all.select { |order| order.amount == 200 }
+    # orders_of_500 = Order.all.select { |order| order.amount == 500 }
+    # orders_of_200 = Order.all.select { |order| order.amount == 200 }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    orders_of_500 = Order.where(amount: 500)
+    orders_of_200 = Order.where(amount: 200)
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+    # rails dbconsole
+    # orders_of_500 = SELECT * FROM Orders WHERE Amount = 500;
+    # orders_of_200 = SELECT * FROM Orders WHERE Amount = 200;
     # ------------------------------------------------------------
 
     # Expectation
@@ -36,6 +43,10 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # Your solution should not contain the ID of the order anywhere
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(order_id).to eq(@order_1.id)
   end
@@ -50,11 +61,16 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # Your solution should not contain the ID of the order anywhere
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(order_id).to eq(@order_15.id)
   end
 
   it '4. finds orders of multiple amounts' do
+
     # ----------------------- Using Ruby -------------------------
     orders_of_500_and_700 = Order.all.select do |order|
       order.amount == 500 || order.amount == 700
@@ -67,6 +83,10 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation
@@ -86,6 +106,10 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(items).to eq(expected_objects)
   end
@@ -101,18 +125,27 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(orders).to eq([@order_3, @order_5, @order_1, @order_7])
   end
 
   it '7. finds orders with an amount between 700 and 1000' do
     expected_result = [@order_11, @order_13, @order_8, @order_10, @order_15, @order_14, @order_12]
+
     # ----------------------- Using Ruby -------------------------
     orders_between_700_and_1000 = Order.all.select { |order| order.amount >= 700 && order.amount <= 1000 }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation
@@ -128,6 +161,10 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation

@@ -22,6 +22,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(orders_of_user_3).to eq(expected_result)
   end
@@ -39,6 +43,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation
@@ -60,6 +68,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(orders).to eq(expected_result)
   end
@@ -79,6 +91,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(items.sort).to eq(expected_result.sort)
   end
@@ -95,6 +111,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # Solution goes here
     # ------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectation
     expect(grouped_items).to eq(expected_result)
   end
@@ -108,6 +128,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation
@@ -145,6 +169,10 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    # ------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
     # ------------------------------------------------------------
 
     # Expectation

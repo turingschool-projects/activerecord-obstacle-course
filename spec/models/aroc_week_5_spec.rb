@@ -36,6 +36,10 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
     # Which ones are you able to switch around without relying on Ruby's Enumerable methods?
     # ---------------------------------------------------------------
 
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
+
     # Expectations
     expect(ordered_items_names).to eq(expected_result)
     expect(ordered_items_names).to_not include(unordered_items)
@@ -78,6 +82,10 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
     # ------------------ ActiveRecord Solution ----------------------
     custom_results = []
     # ---------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
 
     expect(custom_results[0].name).to eq(@user_2.name)
     expect(custom_results[0].total_item_count).to eq(20)
@@ -124,6 +132,10 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
     # ------------------ ActiveRecord Solution ----------------------
     data = []
     # ---------------------------------------------------------------
+
+    # ----------------------- Using SQL --------------------------
+
+    # ------------------------------------------------------------
 
     expect([data[0].user_name,data[0].order_id,data[0].avg_item_cost]).to eq([@user_1.name, @order_1.id, 50])
     expect([data[1].user_name,data[1].order_id,data[1].avg_item_cost]).to eq([@user_1.name, @order_4.id, 125])
