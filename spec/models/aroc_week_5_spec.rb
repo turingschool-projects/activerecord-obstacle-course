@@ -32,7 +32,7 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
 
     # ------------------ ActiveRecord Solution ----------------------
     # Solution goes here
-    # When you find a solution, experiment with adjusting your method chaining
+    # When you find a solution, experiment with adjusting your method chaining.
     # Which ones are you able to switch around without relying on Ruby's Enumerable methods?
     # ---------------------------------------------------------------
 
