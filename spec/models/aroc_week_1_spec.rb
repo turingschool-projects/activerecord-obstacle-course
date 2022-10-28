@@ -51,7 +51,6 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
     # Your solution should not contain the ID of the order anywhere
-    # order_id = Order.select(:id).order(:amount).reverse.first.id
     # ------------------------------------------------------------
 
     # Expectation
