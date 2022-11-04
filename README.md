@@ -18,11 +18,11 @@ The remaining portions of the obstacle course will increase in difficulty and wi
 ```bash
 bundle install
 bundle update
-rake db:{drop,create,migrate,seed}   # seeding will take a few moments
-rspec
+rails db:{drop,create,migrate,seed}   # seeding will take a few moments
+bundle exec rspec spec/models
 # you should see several passing tests, and a few skipped tests
 ```
-
+*NOTE:*
 If you run into bundle issues then delete the `Gemfile.lock` and then run `bundle install`
 
 You may also find that the `rails db:migrate` command does not migrate the test database. If so, you can do this with:
@@ -33,13 +33,13 @@ rails db:migrate RAILS_ENV=test
 
 3. **You must not change the setup or expectations of any test.**
 
-4. Start with the top test within `spec/models/activerecord_obstacle_course_spec.rb` and work in order.
+4. Start with the top test within `spec/models/aroc_week_#_spec.rb` and work in order.
 
-5. To run your tests, you can run `rspec spec/models/activerecord_obstacle_course_spec.rb`
+5. To run your tests, you can run `bundle exec rspec spec/models/aroc_week_#_spec.rb`
 
-6. If you want to run one specific test, you can run `rspec spec/models/activerecord_obstacle_course_spec.rb:LINE_NUMBER`.
+6. If you want to run one specific test, you can run `bundle exec rspec spec/models/aroc_week_#_spec.rb:LINE_NUMBER`.
 
-    * For example: `rspec spec/models/activerecord_obstacle_course_spec.rb:34`
+    * For example: `bundle exec rspec spec/models/aroc_week_4_spec.rb:14`
 
 7. Most of the tests follow the same format...
 
