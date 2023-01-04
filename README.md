@@ -69,6 +69,12 @@ rails db:migrate RAILS_ENV=test
       # -----------------------------
       ```
 
+## Solutions / Extra Help
+If you wish, compare your answers to the ones we came up with in `answers` branch of this repo. 
+
+There are [walkthrough videos](https://drive.google.com/drive/folders/18etfJOBPZoDvCNbWZg67E35GMZUwJiWT) available that may help you think through how we came up with these solutions. Again, **there may be more than one way to solve these problems** so even if your solution doesn't match ours, if it passes the test, it's probably great! Feel free to ask your instructors to double-check your work. 
+
+
 
 ## Extensions
 
