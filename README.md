@@ -22,10 +22,10 @@ rails db:{drop,create,migrate,seed}   # seeding will take a few moments
 bundle exec rspec spec/models
 # you should see several passing tests, and a few skipped tests
 ```
-*NOTE:*
-If you run into bundle issues then delete the `Gemfile.lock` and then run `bundle install`
+*SETUP NOTES:*
+If you run into bundle issues then delete the `Gemfile.lock` and then run `bundle install`. 
 
-You may also find that the `rails db:migrate` command does not migrate the test database. If so, you can do this with:
+If you see an error similar to `ERROR: relation "order_items" does not exist`, that likely means that the `rails db:migrate` command did not migrate the test database. If so, you can fix this by running:
 
 ```
 rails db:migrate RAILS_ENV=test
