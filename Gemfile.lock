@@ -144,12 +144,14 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
+      racc (~> 1.4)
     pg (1.5.3)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (5.6.6)
+    puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
@@ -247,6 +249,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -260,7 +263,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (~> 1.1)
   pry
-  puma (~> 5.0)
+  puma (~> 5.6)
   rails (~> 7.0.5)
   rspec-rails
   shoulda-matchers
