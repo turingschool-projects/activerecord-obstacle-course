@@ -43,7 +43,17 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
+
+# Use Bootstrap for styling [https://github.com/twbs/bootstrap-sass]
+gem 'bootstrap-sass'
+
+# Improve page load speed by only loading new content [https://github.com/turbolinks/turbolinks]
+gem 'turbolinks'
+
+# Use CoffeeScript to write JavaScript [https://github.com/rails/coffee-rails]
+gem 'coffee-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -61,7 +71,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
