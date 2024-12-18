@@ -1,56 +1,37 @@
 require 'rails_helper'
 
-describe 'ActiveRecord Obstacle Course, Week 5' do
+describe 'ActiveRecord Obstacle Course, Week 6 and Beyond' do
+  # To be successful, you should be familiar with: #find, #where, #order, #limit, #pluck, #sum, #average, #distinct, #joins, #count, #group, #includes, #select, and virtual attributes
 
-# Looking for your test setup data?
-# It's currently inside /spec/rails_helper.rb
-# Not a very elegant solution, but works for this iteration.
-
-# Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
-
-# ----------------------
-
-
-  it '26. returns the names of items that are associated with one or more orders' do
-    unordered_item_1 = create(:item, name: 'Unordered Item_1')
-    unordered_item_2 = create(:item, name: 'Unordered Item_2')
-    unordered_item_3 = create(:item, name: 'Unordered Item_3')
-
-    unordered_items = [unordered_item_1, unordered_item_2, unordered_item_3, @item_6.name]
-    expected_result = ['Abercrombie', 'Banana Republic', 'Calvin Klein', 'Dickies', 'Eddie Bauer', 'Fox', 'Giorgio Armani', 'Izod', 'J.crew']
-
-    # ----------------------- Using Ruby -------------------------
-    items = Item.all
-
-    ordered_items = items.map do |item|
-      item if item.orders.present?
-    end.compact
-
-    ordered_items_names = ordered_items.map(&:name)
-    ordered_items_names.sort
-    # ------------------------------------------------------------
-
-    # ------------------ ActiveRecord Solution ----------------------
-    # Solution goes here
-    # When you find a solution, experiment with adjusting your method chaining.
-    # Which ones are you able to switch around without relying on Ruby's Enumerable methods?
-    # ---------------------------------------------------------------
-
-    # Expectations
-    expect(ordered_items_names).to eq(expected_result)
-    expect(ordered_items_names).to_not include(unordered_items)
+  # Looking for your test setup data?
+  # It's currently inside /spec/test_data.rb
+  # In there you will find a method `load_test_data` that will run for each `it` block
+  before :each do
+    load_test_data
   end
 
+  # Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
+
+  # ----------------------
+
+  ## How to complete these exercises:
+  # Currently, these tests are passing because we're using Ruby to do it. Re-write the Ruby solutions using ActiveRecord.
+  # ex. orders_of_500 = Order.where(...)
+  # You can comment out the Ruby example after your AR is working.
+
   xit '27. returns a table of information for all users orders' do
-    custom_results = [@user_3, @user_1, @user_2]
+    expected_results = [@user_3, @user_1, @user_2]
 
     # using a single ActiveRecord call, fetch a joined object that mimics the
     # following table of information:
-    # --------------------------------------------------------------------------
-    # users.name     |  total_order_count
-    # Mugatu         |         4
-    # Hansel         |         5
-    # Zoolander      |         6
+
+    # -------------------------------------
+    # users.name   |  total_order_count
+    # -------------------------------------
+    # Mugatu       |         4
+    # Hansel       |         5
+    # Zoolander    |         6
+    # -------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
     custom_results = []
@@ -69,11 +50,14 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
 
     # using a single ActiveRecord call, fetch a joined object that mimics the
     # following table of information:
-    # --------------------------------------------------------------------------
+
+    # ----------------------------------------
     # users.name      |  total_item_count
+    # ----------------------------------------
     # Hansel          |         20
     # Mugatu          |         16
     # Zoolander       |         24
+    # ----------------------------------------
 
     # ------------------ ActiveRecord Solution ----------------------
     custom_results = []
@@ -90,23 +74,26 @@ describe 'ActiveRecord Obstacle Course, Week 5' do
   xit '29. returns a table of information for all users orders and item counts' do
     # using a single ActiveRecord call, fetch a joined object that mimics the
     # following table of information:
-    # ---------------------------------------
-    # user_name  | order_id  | avg_item_cost
-    # Zoolander      | 5         | 50
-    # Zoolander      | 11        | 125
-    # Zoolander      | 8         | 145
-    # Zoolander      | 14        | 150
-    # Zoolander      | 9         | 187
-    # Zoolander      | 6         | 217
-    # Mugatu         | 1         | 125
-    # Mugatu         | 12        | 162
-    # Mugatu         | 15        | 212
-    # Mugatu         | 10        | 250
-    # Hansel         | 4         | 75
-    # Hansel         | 3         | 137
-    # Hansel         | 7         | 175
-    # Hansel         | 2         | 200
-    # Hansel         | 13        | 225
+
+    # ----------------------------------------------
+    # user_name   |   order_id  |   avg_item_cost
+    # ----------------------------------------------
+    # Zoolander   |      5      |      50
+    # Zoolander   |      11     |      125
+    # Zoolander   |      8      |      145
+    # Zoolander   |      14     |      150
+    # Zoolander   |      9      |      187
+    # Zoolander   |      6      |      217
+    # Mugatu      |      1      |      125
+    # Mugatu      |      12     |      162
+    # Mugatu      |      15     |      212
+    # Mugatu      |      10     |      250
+    # Hansel      |      4      |      75
+    # Hansel      |      3      |      137
+    # Hansel      |      7      |      175
+    # Hansel      |      2      |      200
+    # Hansel      |      13     |      225
+    # ----------------------------------------------
 
     # the raw SQL to produce this table would look like the following:
     # select

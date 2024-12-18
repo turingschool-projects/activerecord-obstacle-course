@@ -1,18 +1,23 @@
 require 'rails_helper'
 
-describe 'ActiveRecord Obstacle Course, Week 1' do
+describe 'ActiveRecord Obstacle Course, Week 3' do
+  # To be successful, you should be familiar with: #find, #where, #order, #limit
 
-# Looking for your test setup data?
-# It's currently inside /spec/rails_helper.rb
-# Not a very elegant solution, but works for this iteration.
+  # Looking for your test setup data?
+  # It's currently inside /spec/test_data.rb
+  # In there you will find a method `load_test_data` that will run for each `it` block
+  before :each do
+    load_test_data
+  end
 
-# Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
+  # Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
 
-# ----------------------
+  # ----------------------
 
-## How to complete these exercises: 
-# Currently, these tests are passing becasue we're using Ruby to do it. Re-write the Ruby solutions using ActiveRecord. 
-# You can comment out the Ruby example after your AR is working. 
+  ## How to complete these exercises:
+  # Currently, these tests are passing because we're using Ruby to do it. Re-write the Ruby solutions using ActiveRecord.
+  # ex. orders_of_500 = Order.where(...)
+  # You can comment out the Ruby example after your AR is working.
 
   it '1. finds orders by amount' do
     # ----------------------- Using Ruby -------------------------
@@ -90,7 +95,7 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(items).to eq(expected_objects)
+    expect(items).to match_array(expected_objects)
   end
 
   it '6. finds multiple orders by id' do
@@ -105,11 +110,12 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
     # ------------------------------------------------------------
 
     # Expectation
-    expect(orders).to eq([@order_3, @order_5, @order_1, @order_7])
+    expect(orders).to match_array([@order_3, @order_5, @order_1, @order_7])
   end
 
   it '7. finds orders with an amount between 700 and 1000' do
     expected_result = [@order_11, @order_13, @order_8, @order_10, @order_15, @order_14, @order_12]
+
     # ----------------------- Using Ruby -------------------------
     orders_between_700_and_1000 = Order.all.select { |order| order.amount >= 700 && order.amount <= 1000 }
     # ------------------------------------------------------------
@@ -120,20 +126,5 @@ describe 'ActiveRecord Obstacle Course, Week 1' do
 
     # Expectation
     expect(orders_between_700_and_1000).to eq(expected_result)
-  end
-
-  it '8. finds orders with an amount less than 550' do
-    expected_result = [@order_3, @order_2, @order_1, @order_4]
-
-    # ----------------------- Using Ruby -------------------------
-    orders_less_than_550 = Order.all.select { |order| order.amount < 550 }
-    # ------------------------------------------------------------
-
-    # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
-    # ------------------------------------------------------------
-
-    # Expectation
-    expect(orders_less_than_550).to eq(expected_result)
   end
 end

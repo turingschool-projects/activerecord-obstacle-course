@@ -1,15 +1,38 @@
 require 'rails_helper'
 
-describe 'ActiveRecord Obstacle Course, Week 2' do
+describe 'ActiveRecord Obstacle Course, Week 4' do
+  # To be successful, you should be familiar with: #find, #where, #order, #limit, #pluck
 
-# Looking for your test setup data?
-# It's currently inside /spec/rails_helper.rb
-# Not a very elegant solution, but works for this iteration.
+  # Looking for your test setup data?
+  # It's currently inside /spec/test_data.rb
+  # In there you will find a method `load_test_data` that will run for each `it` block
+  before :each do
+    load_test_data
+  end
 
-# Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
+  # Here are the docs associated with ActiveRecord queries: http://guides.rubyonrails.org/active_record_querying.html
 
-# ----------------------
+  # ----------------------
 
+  ## How to complete these exercises:
+  # Currently, these tests are passing because we're using Ruby to do it. Re-write the Ruby solutions using ActiveRecord.
+  # ex. orders_of_500 = Order.where(...)
+  # You can comment out the Ruby example after your AR is working.
+
+  it '8. finds orders with an amount less than 550' do
+    expected_result = [@order_3, @order_2, @order_1, @order_4]
+
+    # ----------------------- Using Ruby -------------------------
+    orders_less_than_550 = Order.all.select { |order| order.amount < 550 }
+    # ------------------------------------------------------------
+
+    # ------------------ Using ActiveRecord ----------------------
+    # Solution goes here
+    # ------------------------------------------------------------
+
+    # Expectation
+    expect(orders_less_than_550).to eq(expected_result)
+  end
 
   it '9. finds orders for a user' do
     expected_result = [@order_3, @order_15, @order_9, @order_12]
@@ -92,6 +115,7 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
+    # HINT: This query does not need grouping or aggregating
     # Solution goes here
     # ------------------------------------------------------------
 
@@ -112,42 +136,5 @@ describe 'ActiveRecord Obstacle Course, Week 2' do
 
     # Expectation
     expect(names).to eq(expected_result)
-  end
-
-  it '15. gets all item names associated with all orders' do
-    expected_result = [
-      'Dickies', 'Giorgio Armani', 'Banana Republic', 'Eddie Bauer',
-      'Eddie Bauer', 'Banana Republic', 'J.crew', 'Calvin Klein',
-      'Abercrombie', 'Eddie Bauer', 'Banana Republic', 'J.crew',
-      'Abercrombie', 'Dickies', 'Giorgio Armani', 'Abercrombie',
-      'Abercrombie', 'Dickies', 'Giorgio Armani', 'Abercrombie',
-      'Dickies', 'Giorgio Armani', 'Banana Republic', 'J.crew',
-      'Dickies', 'Giorgio Armani', 'Izod', 'Calvin Klein',
-      'Eddie Bauer', 'Izod', 'Calvin Klein', 'Fox',
-      'Abercrombie', 'Eddie Bauer', 'Banana Republic', 'J.crew',
-      'Abercrombie', 'Banana Republic', 'Eddie Bauer', 'J.crew',
-      'Abercrombie', 'Dickies', 'Giorgio Armani', 'Abercrombie',
-      'Giorgio Armani', 'Banana Republic', 'Izod', 'Fox',
-      'Giorgio Armani', 'Eddie Bauer', 'Izod', 'Calvin Klein',
-      'Abercrombie', 'Eddie Bauer', 'J.crew', 'Calvin Klein',
-      'Abercrombie', 'Giorgio Armani', 'J.crew', 'Fox',
-    ]
-
-    # ----------------------- Using Ruby -------------------------
-    names = Order.all.map do |order|
-      if order.items
-        order.items.map { |item| item.name }
-      end
-    end
-    
-    names = names.flatten
-    # ------------------------------------------------------------
-
-    # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
-    # ------------------------------------------------------------
-
-    # Expectation
-    expect(names.sort).to eq(expected_result.sort)
   end
 end
